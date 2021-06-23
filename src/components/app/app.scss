@@ -1,0 +1,29 @@
+$fullHeight: 85vh;
+$bgColor: #e5e5e5;
+$containerBgColor: #fff;
+$blackColor: #000;
+$containerWidth: 1340px;
+$containerHeight: 1409px;
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+body {
+    height: $fullHeight;
+    background: $bgColor;
+}
+
+.container {
+
+    height: $containerHeight;
+    max-width: $containerWidth;
+    background-color: $containerBgColor;
+
+    border-radius: 10px;
+    margin: 25px auto;
+
+    box-shadow: 0px 15px 20px rgba($blackColor, 0.03);
+}
