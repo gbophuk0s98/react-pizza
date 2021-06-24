@@ -1,0 +1,504 @@
+@import 'variables';
+@import 'libs/normalize';
+
+%FLEX_SB_CENTER {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+%SIMPLE_HORIZONTAL_LINE {
+    &::before {
+        content: '';
+        position: absolute;
+        display: block;
+        background-color: $headerBtnColor;
+        height: 2px;
+        width: 17px;
+        margin-top: 5px;
+        top: 35%;
+        left: 10px;
+        transition: $defaultTransition;
+    }
+
+    &:hover::before,
+    &:hover::after {
+        background-color: $whiteColor;
+    }
+}
+
+%LARGE_BUTTONS {
+    width: 210px;
+    border-radius: 30px;
+    text-align: center;
+    padding: 20px 0;
+    cursor: pointer;
+    transition: $defaultTransition;
+}
+
+/* General */
+
+.container {
+    max-width: $containerWidth;
+    width: 100%;
+    background-color: $containerBgColor;
+
+    border-radius: 10px;
+    margin: $defaultIndent auto;
+
+    box-shadow: 0px 15px 20px rgba($blackColor, 0.03);
+
+    & .content {
+        padding: 40px 50px;
+    }
+}
+
+/* Header */
+
+.header {
+    @extend %FLEX_SB_CENTER;
+
+    border-bottom: 1px solid #f7f7f7;
+    padding-bottom: $defaultIndent;
+
+    &__header-logo {
+        @extend %FLEX_SB_CENTER;
+
+        &-icon {
+            width: 38px;
+            height: 38px;
+        }
+
+
+        &-description {
+            display: flex;
+            flex-direction: column;
+            margin-left: 10px;
+
+            &-title {
+                color: $darkColor;
+                font-size: 24px;
+                font-weight: bold;
+                text-transform: uppercase;
+            }
+
+            &-text {
+                color: #7b7b7b;
+                font-size: 16px;
+            }
+        }
+    }
+
+    &__header-cart {
+        background-color: $headerBtnColor;
+        width: 150px;
+        height: 50px;
+        border-radius: 30px;
+        color: $whiteColor;
+        cursor: pointer;
+        transition: $defaultTransition;
+
+        &:hover {
+            background-color: #fe951e;
+        }
+
+        &-button {
+            color: $whiteColor;
+            text-decoration: none;
+            @extend %FLEX_SB_CENTER;
+            justify-content: space-around;
+            height: 100%;
+
+            &-cost,
+            &-cart {
+                width: 45%;
+                text-align: center;
+            }
+
+            &-cart {
+                border-left: 1px solid #e5e5e5;
+            }
+        }
+    }
+}
+
+/* selection */
+
+.selection {
+    margin-top: $defaultIndent;
+    @extend %FLEX_SB_CENTER;
+
+    &__filters {
+        max-width: 65%;
+        width: 100%;
+
+        &-list {
+            @extend %FLEX_SB_CENTER;
+
+            &-item {
+                cursor: pointer;
+                color: $darkColor;
+                background-color: $filterBackroundColor;
+                padding: 10px 20px;
+                border-radius: 30px;
+                font-weight: bold;
+                transition: $defaultTransition;
+
+                &:hover {
+                    background-color: #181818;
+                    color: $whiteColor;
+                }
+            }
+        }
+    }
+
+    &__sorting {
+        &-selected {
+            cursor: pointer;
+            color: $headerBtnColor;
+            border-bottom: 1px dotted $headerBtnColor;
+        }
+    }
+}
+
+/* main */
+.main {
+    margin-top: $defaultIndent + 10;
+    display: flex;
+    flex-direction: column;
+
+    &__title {
+        font-weight: 700;
+        font-size: 32px;
+    }
+    &__pizza-list {
+        margin-top: $defaultIndent;
+        @extend %FLEX_SB_CENTER;
+        flex-wrap: wrap;
+        &-item {
+            margin-top: $defaultIndent;
+            max-width: 24%;
+
+            &-img {
+                padding: 0px 6px 0 15px;
+            }
+
+            &-title {
+                font-size: 20px;
+                font-weight: bold;
+                text-align: center;
+            }
+            &-selection {
+                height: max-content;
+                padding: 5px;
+                margin-top: $defaultIndent - 5;
+                background: $selectionPizzaColor;
+                border-radius: 10px;
+
+                &-pastry {
+                    background: $selectionPizzaColor;
+                    @extend %FLEX_SB_CENTER;
+
+                    &-button {
+                        border: 0;
+                        width: 48%;
+                        font-size: 14px;
+                        color: $darkColor;
+                        font-weight: 700;
+                        cursor: pointer;
+                        padding: 10px 20px;
+                        text-align: center;
+                        transition: $defaultTransition;
+
+                        &:hover {
+                            background-color: #d4d4d4;
+                            border-radius: 5px;
+                            box-shadow: 0px 2px 4px rgba($blackColor, 0.04);
+                        }
+                    }
+                }
+            }
+
+            &-cost {
+                @extend %FLEX_SB_CENTER;
+                margin-top: $defaultIndent;
+                &-text {
+                    font-weight: 700;
+                    font-size: 22px;
+                }
+                &-button {
+                    color: $addBtnColor;
+                    font-weight: 700;
+                    border-radius: 30px;
+                    border: 1px solid $addBtnColor;
+                    max-width: 40%;
+                    width: 100%;
+                    text-align: center;
+                    padding: 10px;
+                    cursor: pointer;
+                    transition: $defaultTransition;
+
+                    &:hover {
+                        color: $whiteColor;
+                        background: $addBtnColor;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* cart-page */
+
+.cart-content {
+    max-width: 60%;
+    margin: $defaultIndent auto;
+
+    &__header {
+        @extend %FLEX_SB_CENTER;
+        &-title {
+            @extend %FLEX_SB_CENTER;
+            justify-content: flex-start;
+
+            &-text {
+                margin-left: 15px;
+                font-size: 26px;
+                font-weight: 700;
+            }
+        }
+
+        &-button {
+            display: flex;
+            justify-content: flex-end;
+            cursor: pointer;
+            border: 1px solid $whiteColor;
+
+            &-text {
+                font-size: 16px;
+                color: $deleteBtnColor;
+            }
+
+            &:hover {
+                border-bottom: 1px solid $deleteBtnColor;
+            }
+        }
+    }
+
+    &__cart-list {
+        margin-top: $defaultIndent + $defaultIndent - 5;
+        display: flex;
+        flex-direction: column;
+
+        &-item {
+            @extend %FLEX_SB_CENTER;
+            border-top: 1px solid #f4f4f4;
+            padding-top: $defaultIndent;
+
+            &-info {
+                @extend %FLEX_SB_CENTER;
+
+                &-detail {
+                    margin-left: 10px;
+                    display: flex;
+                    flex-direction: column;
+
+                    &-title {
+                        font-weight: 700;
+                        color: $darkColor;
+                        font-size: 22px;
+                    }
+
+                    &-description {
+                        font-size: 18px;
+                        color: #8d8d8d;
+                        padding: 3px 0 0;
+                    }
+                }
+            }
+
+            &-count {
+                @extend %FLEX_SB_CENTER;
+
+                &-minus,
+                &-plus {
+                    width: 16px;
+                    height: 16px;
+                    padding: 10px;
+                    border-radius: 50%;
+                    border: 1px solid $headerBtnColor;
+                    text-align: center;
+                    cursor: pointer;
+                    transition: $defaultTransition;
+
+                    position: relative;
+                    transition: $defaultTransition;
+
+                    @extend %SIMPLE_HORIZONTAL_LINE;
+
+                    &:hover {
+                        background-color: $headerBtnColor;
+                    }
+                    &:hover &-line {
+                        background-color: $whiteColor;
+                    }
+                }
+
+                &-text {
+                    font-weight: 700;
+                    color: $darkColor;
+                    font-size: 22px;
+                    margin: 0 10px;
+                }
+
+                &-plus {
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        display: block;
+                        background-color: $headerBtnColor;
+                        height: 15px;
+                        width: 2px;
+                        margin-top: 5px;
+                        top: 20%;
+                        left: 17px;
+                        transition: $defaultTransition;
+                    }
+                }
+            }
+
+            &-cost {
+                font-size: 22px;
+                font-weight: 700;
+                color: $darkColor;
+            }
+
+            &-delete {
+                width: 16px;
+                height: 16px;
+                border-radius: 50%;
+                border: 2px solid #d7d7d7;
+                transition: $defaultTransition;
+
+                &-icon {
+                    transition: $defaultTransition;
+                }
+
+                &:hover &-icon {
+                    fill: $whiteColor;
+                }
+                &:hover {
+                    background-color: $headerBtnColor;
+                    border-color: $headerBtnColor;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+    &__footer {
+        margin-top: $defaultIndent * 2;
+        display: flex;
+        flex-direction: column;
+
+        &-detail {
+            @extend %FLEX_SB_CENTER;
+            font-size: 22px;
+            &-count {
+                &-text {
+                    margin-right: 5px;
+                }
+
+                &-number {
+                    font-weight: 700;
+                }
+            }
+            &-sum {
+                &-cost {
+                    color: $headerBtnColor;
+                    font-weight: 700;
+                }
+            }
+        }
+
+        &-buttons {
+            margin-top: $defaultIndent * 2;
+            @extend %FLEX_SB_CENTER;
+
+            &-goback {
+                @extend %LARGE_BUTTONS;
+                color: #cacaca;
+                border: 1px solid #d3d3d3;
+
+                &:hover {
+                    background-color: $headerBtnColor;
+                }
+            }
+
+            &-pay {
+                @extend %LARGE_BUTTONS;
+                border: 1px solid $headerBtnColor;
+                background-color: $headerBtnColor;
+                color: $whiteColor;
+
+                &:hover {
+                    opacity: 0.8;
+                }
+            }
+        }
+    }
+}
+
+/*  empty-cart-page */
+
+.empty-cart-content {
+    margin-top: $defaultIndent * 5;
+
+    &__title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &-text {
+            font-weight: 700;
+            font-size: 26px;
+            color: $darkColor;
+            margin-right: 15px;
+        }
+    }
+
+    &__description {
+        font-size: 14px;
+        margin-top: $defaultIndent;
+        color: #777;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+
+        &-first-line {
+            margin-bottom: 5px;
+        }
+    }
+
+    &__big-image {
+        margin-top: $defaultIndent;
+        text-align: center;
+    }
+
+    &__footer {
+        margin-top: $defaultIndent * 2;
+        display: flex;
+        justify-content: center;
+
+        &-button {
+            @extend %LARGE_BUTTONS;
+            background-color: $darkColor;
+            color: $whiteColor;
+            padding: 12px 0;
+
+            &:hover {
+                opacity: 0.5;
+            }
+        }
+    }
+}
