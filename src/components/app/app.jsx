@@ -6,12 +6,6 @@ import '../../scss/app.scss'
 
 import pizza from '../../assets/pizza.png'
 
-const Button = () => {
-    return (
-        <div>qqqq</div>
-    )
-}
-
 const App = () =>
     <div className="container">
         <div className="content">
@@ -82,4 +76,4 @@ const App = () =>
         </div>
     </div>
 
-export default App;
+export default App

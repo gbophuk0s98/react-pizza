@@ -108,6 +108,7 @@
             @extend %FLEX_SB_CENTER;
             justify-content: space-around;
             height: 100%;
+            position: relative;
 
             &-cost,
             &-cart {
@@ -117,6 +118,11 @@
 
             &-cart {
                 border-left: 1px solid #e5e5e5;
+
+                &-icon {
+                    position: absolute;
+                    left: 55%;
+                }
             }
         }
     }

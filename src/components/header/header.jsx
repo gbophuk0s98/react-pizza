@@ -1,8 +1,11 @@
 import React from 'react'
 
-import logo from '../../assets/pizza-logo.svg';
+import Button from '../button'
+
+import logo from '../../assets/pizza-logo.svg'
 
 const Header = () => {
+
     return (
         <header className="header">
             <div className="header__header-logo">
@@ -16,11 +19,8 @@ const Header = () => {
                     </span>
                 </div>
             </div>
-            <div className="header__header-cart">
-                <a className="header__header-cart-button" href="./cart.html">
-                    <div className="header__header-cart-button-cost">520 P</div>
-                    <div className="header__header-cart-button-cart">3</div>
-                </a>
+            <div className="header__header-cart" onClick={e => console.log('qwerty')}>
+                <Button />
             </div>
         </header>
     )
