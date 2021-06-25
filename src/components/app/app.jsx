@@ -16,7 +16,7 @@ const App = () =>
 
                 <div className="selection__filters">
                     <ul className="selection__filters-list">
-                        <li className="selection__filters-list-item">Все</li>
+                        <li className="selection__filters-list-item item--selected">Все</li>
                         <li className="selection__filters-list-item">Мясные</li>
                         <li className="selection__filters-list-item">Вегетарианская</li>
                         <li className="selection__filters-list-item">Гриль</li>

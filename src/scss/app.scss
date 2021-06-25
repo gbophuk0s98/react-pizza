@@ -36,6 +36,27 @@
     transition: $defaultTransition;
 }
 
+%BUTTON {
+    @extend %FLEX_SB_CENTER;
+    justify-content: space-around;
+    align-items: center;
+
+    background-color: $headerBtnColor;
+    width: 150px;
+    height: 50px;
+    font-size: 16px;
+    color: $whiteColor;
+    cursor: pointer;
+    transition: $defaultTransition;
+
+    border: 0;
+    border-radius: 30px;
+
+    &:hover {
+        background-color: #ffdf8c;
+    }
+}
+
 /* General */
 
 .container {
@@ -88,42 +109,53 @@
             }
         }
     }
+}
 
-    &__header-cart {
-        background-color: $headerBtnColor;
-        width: 150px;
-        height: 50px;
-        border-radius: 30px;
-        color: $whiteColor;
-        cursor: pointer;
-        transition: $defaultTransition;
+.button {
 
-        &:hover {
-            background-color: #fe951e;
+    @extend %BUTTON;
+
+    & > .header__header-cart {
+        &-cost,
+        &-count {
+            width: 45%;
+            text-align: center;
         }
 
-        &-button {
-            color: $whiteColor;
-            text-decoration: none;
+        &-count {
+            width: 35%;
             @extend %FLEX_SB_CENTER;
             justify-content: space-around;
-            height: 100%;
-            position: relative;
+            stroke: $whiteColor;
+            margin-right: 5px;
+        }
 
-            &-cost,
-            &-cart {
-                width: 45%;
-                text-align: center;
-            }
+        &-line {
+            height: 50%;
+            width: 1px;
+            background: $whiteColor;
+        }
+    }
+}
 
-            &-cart {
-                border-left: 1px solid #e5e5e5;
+.button--outline {
 
-                &-icon {
-                    position: absolute;
-                    left: 55%;
-                }
-            }
+    border: 1px solid $headerBtnColor;
+    background-color: $whiteColor;
+    color: $darkColor;
+
+    &:hover {
+        background-color: $headerBtnColor;
+    }
+
+    & > .header__header-cart {
+        &-line {
+            background: $darkColor;
+        }
+
+        &-count {
+            stroke: $darkColor;
+            margin-right: 5px;
         }
     }
 }
@@ -154,6 +186,11 @@
                     background-color: #181818;
                     color: $whiteColor;
                 }
+            }
+
+            .item--selected {
+                background-color: #181818;
+                color: $whiteColor;
             }
         }
     }
