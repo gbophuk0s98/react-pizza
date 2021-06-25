@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 
+import arrow from '../../assets/arrow-top.svg'
+
 const SortPopup = ({ items }) => {
 
     const [isOpen, setIsOpen] = useState(false)
@@ -16,7 +18,7 @@ const SortPopup = ({ items }) => {
 
     useEffect(() => {
         document.body.addEventListener('click', (e) => {
-            if (!e.path.includes(ref.current) && isOpen) {
+            if (!e.path.includes(ref.current)) {
                 setIsOpen(false)
             }
         })
@@ -24,6 +26,14 @@ const SortPopup = ({ items }) => {
 
     return (
         <div className="selection__sorting">
+
+            <img
+                src={arrow}
+                className={isOpen ? 'selection__sorting-arrow rotated' : 'selection__sorting-arrow'}
+                height="7px"
+                alt="arrow"
+            />
+
             <span className="selection__sorting-text">Сортировка по</span>
             <span
                 className="selection__sorting-selected"

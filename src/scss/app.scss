@@ -223,6 +223,14 @@
     &__sorting {
         position: relative;
 
+        &-arrow {
+            margin-right: 10px;
+
+            &.rotated {
+                transform: rotate(180deg);
+            }
+        }
+
         &-text {
             margin-right: 5px;
         }
