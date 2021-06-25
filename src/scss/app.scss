@@ -160,6 +160,10 @@
     }
 }
 
+.sort--selected {
+    color: $headerBtnColor;
+}
+
 /* selection */
 
 .selection {
@@ -183,7 +187,7 @@
                 transition: $defaultTransition;
 
                 &:hover {
-                    background-color: #181818;
+                    background-color: $headerBtnColor;
                     color: $whiteColor;
                 }
             }
@@ -196,10 +200,34 @@
     }
 
     &__sorting {
+        position: relative;
         &-selected {
             cursor: pointer;
             color: $headerBtnColor;
             border-bottom: 1px dotted $headerBtnColor;
+        }
+
+        &-popup {
+            position: absolute;
+            background-color: $whiteColor;
+            box-shadow: 0px 1px 3px grey;
+            padding: 5px;
+            border-radius: 3px;
+            right: 0px;
+            top: 30px;
+
+            &-list {
+                &-item {
+                    padding: 5px 10px;
+                    cursor: pointer;
+                    transition: $defaultTransition;
+                    border-radius: 3px;
+
+                    &:hover {
+                        background-color: $filterBackroundColor;
+                    }
+                }
+            }
         }
     }
 }
