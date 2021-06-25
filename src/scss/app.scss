@@ -65,12 +65,32 @@
     background-color: $containerBgColor;
 
     border-radius: 10px;
-    margin: $defaultIndent auto;
+    margin: 0 auto;
 
     box-shadow: 0px 15px 20px rgba($blackColor, 0.03);
 
     & .content {
         padding: 40px 50px;
+    }
+}
+
+::-webkit {
+    &-scrollbar{
+        width: 10px;
+
+        &-track {
+            background-color: $whiteColor;
+        }
+
+        &-thumb {
+            background: #909090;
+            border-radius: 15px;
+            border: 2px solid $whiteColor;
+        
+            &:hover {
+                background: #7c7c7c;
+            }
+        }
     }
 }
 
@@ -162,6 +182,7 @@
 
 .sort--selected {
     color: $headerBtnColor;
+    font-weight: 700;
 }
 
 /* selection */
@@ -201,6 +222,11 @@
 
     &__sorting {
         position: relative;
+
+        &-text {
+            margin-right: 5px;
+        }
+
         &-selected {
             cursor: pointer;
             color: $headerBtnColor;
@@ -215,6 +241,8 @@
             border-radius: 3px;
             right: 0px;
             top: 30px;
+            font-size: 16px;
+            transition: $defaultTransition;
 
             &-list {
                 &-item {

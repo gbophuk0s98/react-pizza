@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Header, Categories } from '../index'
+import { Header, Categories, SortPopup } from '../index'
 
 import '../../scss/app.scss'
 
@@ -24,17 +24,13 @@ const App = () =>
                     ]}
                     onClick={name => console.log(`hello ${name}`)}
                 />
-                <div className="selection__sorting">
-                    <span>{'Сортировка по '}</span>
-                    <span className="selection__sorting-selected">популярности</span>
-                    <div className="selection__sorting-popup">
-                        <ul className="selection__sorting-popup-list">
-                            <li className="selection__sorting-popup-list-item sort--selected">популярности</li>
-                            <li className="selection__sorting-popup-list-item">цене</li>
-                            <li className="selection__sorting-popup-list-item">алфавиту</li>
-                        </ul>
-                    </div>
-                </div>
+                <SortPopup
+                    items={[
+                        'популярности',
+                        'цене',
+                        'алфавиту'
+                    ]}
+                />
             </section>
 
             <main className="main">
