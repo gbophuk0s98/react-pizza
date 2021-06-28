@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Categories, SortPopup, PizzaBlock } from '../../components'
 
-const HomePage = ({ pizzas }) => {
+const HomePage = ({ items }) => {
 
     return (
         <>
@@ -31,7 +31,7 @@ const HomePage = ({ pizzas }) => {
                 <div className="main__title">Все пиццы</div>
 
                 <div className="main__pizza-list">
-                    {pizzas.map(pizza => <PizzaBlock key={pizza.id} {...pizza} />)}
+                    {items && items.map(pizza => <PizzaBlock key={pizza.id} {...pizza} />)}
                 </div>
             </main>
         </>
