@@ -57,6 +57,26 @@
     }
 }
 
+%BUTTON_AVAILABILITY {
+    &.active {
+
+        &.selected, &:hover {
+            background-color: #d4d4d4;
+            border-radius: 5px;
+            box-shadow: 0px 2px 4px rgba($blackColor, 0.04);
+        }
+
+        &.selected {
+            background-color: #c1c1c1;
+        }
+    }
+
+    &.disabled {
+        opacity: 0.5;
+        pointer-events: none;
+    }
+}
+
 /* General */
 
 .container {
@@ -283,16 +303,28 @@
         margin-top: $defaultIndent;
         @extend %FLEX_SB_CENTER;
         flex-wrap: wrap;
+
+        &::after {
+            flex-basis: 48%;
+            content: '';
+        }
+
         &-item {
             margin-top: $defaultIndent;
-            max-width: 24%;
+            flex-basis: 24%;
+
+
+            &::after {
+                content: '';
+                flex: auto;
+            }
 
             &-img {
                 padding: 0px 6px 0 15px;
             }
 
             &-title {
-                font-size: 20px;
+                font-size: 18px;
                 font-weight: bold;
                 text-align: center;
             }
@@ -306,6 +338,7 @@
                 &-pastry {
                     background: $selectionPizzaColor;
                     @extend %FLEX_SB_CENTER;
+                    margin-bottom: 5px;
 
                     &-button {
                         border: 0;
@@ -318,11 +351,7 @@
                         text-align: center;
                         transition: $defaultTransition;
 
-                        &:hover {
-                            background-color: #d4d4d4;
-                            border-radius: 5px;
-                            box-shadow: 0px 2px 4px rgba($blackColor, 0.04);
-                        }
+                        @extend %BUTTON_AVAILABILITY;
                     }
                 }
             }
