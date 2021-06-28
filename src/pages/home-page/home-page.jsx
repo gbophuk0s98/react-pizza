@@ -20,9 +20,9 @@ const HomePage = ({ pizzas }) => {
                 />
                 <SortPopup
                     items={[
-                        'популярности',
-                        'цене',
-                        'алфавиту'
+                        { name: 'популярности', type: 'popular' },
+                        { name: 'цене', type: 'price' },
+                        { name: 'алфавиту', type: 'alphabet' }
                     ]}
                 />
             </section>
@@ -31,7 +31,7 @@ const HomePage = ({ pizzas }) => {
                 <div className="main__title">Все пиццы</div>
 
                 <div className="main__pizza-list">
-                    {pizzas.map(pizza => <PizzaBlock key={pizza.id} pizza={pizza} />)}
+                    {pizzas.map(pizza => <PizzaBlock key={pizza.id} {...pizza} />)}
                 </div>
             </main>
         </>

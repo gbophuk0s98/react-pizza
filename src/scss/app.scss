@@ -176,26 +176,44 @@
             background: $whiteColor;
         }
     }
-}
 
-.button--outline {
+    &--outline {
 
-    border: 1px solid $headerBtnColor;
-    background-color: $whiteColor;
-    color: $darkColor;
-
-    &:hover {
-        background-color: $headerBtnColor;
+        border: 1px solid $headerBtnColor;
+        background-color: $whiteColor;
+        color: $darkColor;
+    
+        &:hover {
+            background-color: $headerBtnColor;
+        }
+    
+        & > .header__header-cart {
+            &-line {
+                background: $darkColor;
+            }
+    
+            &-count {
+                stroke: $darkColor;
+                margin-right: 5px;
+            }
+        }
     }
 
-    & > .header__header-cart {
-        &-line {
-            background: $darkColor;
-        }
-
-        &-count {
-            stroke: $darkColor;
-            margin-right: 5px;
+    &--bold {
+        color: $addBtnColor;
+        font-weight: 700;
+        border-radius: 30px;
+        border: 1px solid $addBtnColor;
+        max-width: 50%;
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+        cursor: pointer;
+        transition: $defaultTransition;
+    
+        &:hover {
+            color: $whiteColor;
+            background: $addBtnColor;
         }
     }
 }
@@ -206,7 +224,6 @@
 }
 
 /* selection */
-
 .selection {
     margin-top: $defaultIndent;
     @extend %FLEX_SB_CENTER;
@@ -359,26 +376,10 @@
             &-cost {
                 @extend %FLEX_SB_CENTER;
                 margin-top: $defaultIndent;
+
                 &-text {
                     font-weight: 700;
                     font-size: 22px;
-                }
-                &-button {
-                    color: $addBtnColor;
-                    font-weight: 700;
-                    border-radius: 30px;
-                    border: 1px solid $addBtnColor;
-                    max-width: 40%;
-                    width: 100%;
-                    text-align: center;
-                    padding: 10px;
-                    cursor: pointer;
-                    transition: $defaultTransition;
-
-                    &:hover {
-                        color: $whiteColor;
-                        background: $addBtnColor;
-                    }
                 }
             }
         }
@@ -386,7 +387,6 @@
 }
 
 /* cart-page */
-
 .cart-content {
     max-width: 60%;
     margin: $defaultIndent auto;
@@ -586,7 +586,6 @@
 }
 
 /*  empty-cart-page */
-
 .empty-cart-content {
     margin-top: $defaultIndent * 5;
 

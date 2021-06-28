@@ -8,6 +8,7 @@ const Button = (props) => {
             className={
                 classNames('button', {
                     'button--outline': props.outline,
+                    'button--bold': props.bold,
                 })
             }
         >

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { connect } from 'react-redux'
 
 import arrow from '../../assets/arrow-top.svg'
 
@@ -40,7 +41,7 @@ const SortPopup = ({ items }) => {
                 onClick={togglePopup}
                 ref={ref}
             >
-                {items && items[isActive]}
+                {items && items[isActive].name}
             </span>
             {
                 isOpen &&
@@ -59,7 +60,7 @@ const SortPopup = ({ items }) => {
                                         className={isActive === idx ? classNames.active : classNames.default}
                                         onClick={() => setIsActive(idx)}
                                     >
-                                        {category}
+                                        {category.name}
                                     </li>
                                 )
                             })
@@ -70,5 +71,16 @@ const SortPopup = ({ items }) => {
         </div>
     )
 }
+
+const mapStateToProps = state => {
+    return {
+
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {}
+}
+
 
 export default SortPopup

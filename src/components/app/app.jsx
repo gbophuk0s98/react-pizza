@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
+import axios from 'axios'
 
 import { Header } from '../index'
 import { CartPage, HomePage } from '../../pages'
@@ -11,11 +12,12 @@ const App = () => {
 
     const [pizzas, setPizzas] = useState([])
 
-    useEffect(() => {
-        fetch('http://localhost:3000/db.json')
-            .then((response) => response.json())
-            .then(json => setPizzas(json.pizzas))
-    }, [])
+    // useEffect(() => {
+
+    //     axios.get('http://localhost:3000/db.json')
+    //         .then(res => setPizzas(res.data.pizzas))
+
+    // }, [])
 
     return (
         <div className="container">
