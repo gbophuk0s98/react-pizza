@@ -10,7 +10,7 @@ const categories = ['Все', 'Мясные', 'Вегетарианские', '�
 const sortPopupItems = [
     { label: 'популярности', type: 'rating' },
     { label: 'цене', type: 'price' },
-    { label: 'алфавиту', type: 'alphabet' }
+    { label: 'алфавиту', type: 'name' }
 ]
 
 const HomePage = () => {
