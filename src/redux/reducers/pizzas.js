@@ -1,6 +1,6 @@
 const initialState = {
     items: [],
-    isLoading: false,
+    isLoading: true,
     error: null,
 }
 
@@ -10,11 +10,16 @@ const pizzas = (state, action) => {
         return initialState
 
     switch (action.type) {
-
-        case 'SET_PIZZAS':
+        case 'FETCH_PIZZAS_REQUEST':
             return {
                 ...state,
-                items: action.payload
+                isLoading: true,
+            }
+        case 'FETCH_PIZZAS_SUCCESS':
+            return {
+                ...state,
+                items: action.payload,
+                isLoading: false,
             }
         default:
             return state

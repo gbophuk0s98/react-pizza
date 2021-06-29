@@ -13,6 +13,7 @@ const PizzaBlock = ({ imageUrl, name, types, sizes, price }) => {
     const [activeType, setActiveType] = useState(null)
     const [activeSize, setActiveSize] = useState(null)
 
+
     const getClasses = isAvailable =>
         classNames('main__pizza-list-item-selection-pastry-button',
             {
