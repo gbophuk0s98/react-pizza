@@ -13,5 +13,5 @@ const setPizzas = items => ({
 
 export {
     setPizzas,
-    fetchPizzas
+    fetchPizzas,
 }

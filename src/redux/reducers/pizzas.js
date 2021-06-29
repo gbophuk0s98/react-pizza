@@ -21,6 +21,13 @@ const pizzas = (state, action) => {
                 items: action.payload,
                 isLoading: false,
             }
+        case 'SET_PIZZAS_LOADING': {
+            console.log('action.payload', action.payload)
+            return {
+                ...state,
+                isLoading: action.payload
+            }
+        }
         default:
             return state
     }

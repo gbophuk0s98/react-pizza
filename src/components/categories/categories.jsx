@@ -1,14 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-const Categories = React.memo(({ items, onClick }) => {
+const classNames = {
+    default: 'selection__filters-list-item',
+    active: `selection__filters-list-item item--selected`
+}
 
-    const [classNames,] = useState({
-        default: 'selection__filters-list-item',
-        active: `selection__filters-list-item item--selected`
-    })
-
-    const [itemSelected, setItemSelected] = useState(0)
-    console.log('RENDER')
+const Categories = React.memo(({ categoryIdx, items, onSelectCategory }) => {
 
     if (!items)
         return <span>Список пуст</span>
@@ -21,12 +18,9 @@ const Categories = React.memo(({ items, onClick }) => {
                     {items.map((name, idx) => {
                         return (
                             <li
-                                className={itemSelected === idx ? classNames.active : classNames.default}
+                                className={categoryIdx === idx ? classNames.active : classNames.default}
                                 key={`${name}_${idx}`}
-                                onClick={() => {
-                                    setItemSelected(idx)
-                                    onClick(idx)
-                                }}
+                                onClick={() => onSelectCategory(idx)}
                             >
                                 {name}
                             </li>

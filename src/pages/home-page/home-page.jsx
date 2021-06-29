@@ -18,13 +18,14 @@ const HomePage = () => {
     const dispatch = useDispatch()
     const pizzas = useSelector(({ pizzas }) => pizzas.items)
     const loading = useSelector(({ pizzas }) => pizzas.isLoading)
+    const { category: categoryIdx, sortBy } = useSelector(({ filters }) => filters)
 
     const onSelectCategory = React.useCallback((idx) => dispatch(setCategory(idx)), [dispatch])
 
     React.useEffect(() => {
         if (!pizzas.length)
             dispatch(fetchPizzas())
-    }, [dispatch, pizzas])
+    }, [categoryIdx])
 
 
     return (
@@ -32,7 +33,8 @@ const HomePage = () => {
             <section className="selection">
                 <Categories
                     items={categories}
-                    onClick={onSelectCategory}
+                    onSelectCategory={onSelectCategory}
+                    categoryIdx={categoryIdx}
                 />
                 <SortPopup
                     items={sortPopupItems}
@@ -45,7 +47,8 @@ const HomePage = () => {
                 <div className="main__pizza-list">
                     {!loading
                         ? pizzas.map(pizza => <PizzaBlock isLoading={loading} key={pizza.id} {...pizza} />)
-                        : Array(10).fill(<LoadingBlock />)}
+                        : Array.from(Array(10), (_, idx) => <LoadingBlock key={idx} />)
+                    }
                 </div>
             </main>
         </>
