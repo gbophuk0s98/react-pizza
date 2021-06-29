@@ -1,14 +1,14 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { setCategory } from '../../redux/actions/filters'
+import { setCategory, setSortBy } from '../../redux/actions/filters'
 import { fetchPizzas } from '../../redux/actions/pizzas'
 
 import { Categories, SortPopup, PizzaBlock, LoadingBlock } from '../../components'
 
 const categories = ['Все', 'Мясные', 'Вегетарианские', 'Гриль', 'Острые', 'Закрытые']
 const sortPopupItems = [
-    { label: 'популярности', type: 'popular' },
+    { label: 'популярности', type: 'rating' },
     { label: 'цене', type: 'price' },
     { label: 'алфавиту', type: 'alphabet' }
 ]
@@ -18,14 +18,15 @@ const HomePage = () => {
     const dispatch = useDispatch()
     const pizzas = useSelector(({ pizzas }) => pizzas.items)
     const loading = useSelector(({ pizzas }) => pizzas.isLoading)
-    const { category: categoryIdx, sortBy } = useSelector(({ filters }) => filters)
+    const { category: categoryIdx, sortBy: sortByString } = useSelector(({ filters }) => filters)
 
     const onSelectCategory = React.useCallback((idx) => dispatch(setCategory(idx)), [dispatch])
 
+    const onClickSortType = React.useCallback((idx) => dispatch(setSortBy(sortPopupItems[idx].type)), [dispatch])
+
     React.useEffect(() => {
-        if (!pizzas.length)
-            dispatch(fetchPizzas())
-    }, [categoryIdx])
+        dispatch(fetchPizzas(categoryIdx, sortByString))
+    }, [categoryIdx, sortByString])
 
 
     return (
@@ -38,6 +39,8 @@ const HomePage = () => {
                 />
                 <SortPopup
                     items={sortPopupItems}
+                    sortType={sortByString}
+                    onClickSortType={onClickSortType}
                 />
             </section>
 

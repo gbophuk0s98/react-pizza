@@ -15,7 +15,7 @@
             ],
             "price": 803,
             "category": 0,
-            "rating": 4
+            "rating": 6.5
         },
         {
             "id": 1,
@@ -29,8 +29,8 @@
                 40
             ],
             "price": 245,
-            "category": 1,
-            "rating": 6
+            "category": 2,
+            "rating": 6.8
         },
         {
             "id": 2,
@@ -44,8 +44,8 @@
                 40
             ],
             "price": 295,
-            "category": 1,
-            "rating": 4
+            "category": 3,
+            "rating": 7.0
         },
         {
             "id": 3,
@@ -60,8 +60,8 @@
                 40
             ],
             "price": 275,
-            "category": 2,
-            "rating": 2
+            "category": 3,
+            "rating": 6.6
         },
         {
             "id": 4,
@@ -77,7 +77,7 @@
                 40
             ],
             "price": 415,
-            "category": 3,
+            "category": 1,
             "rating": 8
         },
         {
@@ -92,8 +92,8 @@
                 40
             ],
             "price": 580,
-            "category": 2,
-            "rating": 2
+            "category": 4,
+            "rating": 8.4
         },
         {
             "id": 6,
@@ -126,8 +126,8 @@
                 40
             ],
             "price": 450,
-            "category": 4,
-            "rating": 10
+            "category": 2,
+            "rating": 9.3
         },
         {
             "id": 8,
@@ -144,12 +144,12 @@
             ],
             "price": 395,
             "category": 5,
-            "rating": 10
+            "rating": 7.9
         },
         {
             "id": 9,
             "imageUrl": "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/30367198-f3bd-44ed-9314-6f717960da07.jpg",
-            "name": "Овощи и грибы 🌱",
+            "name": "Овощи и грибы",
             "types": [
                 1
             ],
@@ -159,7 +159,7 @@
                 40
             ],
             "price": 285,
-            "category": 5,
+            "category": 2,
             "rating": 7
         }
     ]

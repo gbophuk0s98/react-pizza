@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const classNames = {
     default: 'selection__filters-list-item',
@@ -31,5 +32,16 @@ const Categories = React.memo(({ categoryIdx, items, onSelectCategory }) => {
         </>
     )
 })
+
+Categories.propTypes = {
+    categoryIdx: PropTypes.number.isRequired,
+    items: PropTypes.arrayOf(PropTypes.string).isRequired,
+    onSelectCategory: PropTypes.func,
+}
+
+Categories.defaultProps = {
+    categoryIdx: 0,
+    items: []
+}
 
 export default Categories

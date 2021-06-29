@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
+import PropTypes from 'prop-types'
 
 import arrow from '../../assets/arrow-top.svg'
 
@@ -7,10 +8,10 @@ const classNames = {
     active: `selection__sorting-popup-list-item sort--selected`
 }
 
-const SortPopup = React.memo(({ items }) => {
+const SortPopup = React.memo(({ items, sortType, onClickSortType }) => {
 
     const [isOpen, setIsOpen] = useState(false)
-    const [isActive, setIsActive] = useState(0)
+    const [isActiveIdx, setIsActiveIdx] = useState(items.findIndex(({ type }) => type === sortType))
     const ref = useRef(null)
 
     const onSelectHandler = () => setIsOpen(false)
@@ -23,6 +24,10 @@ const SortPopup = React.memo(({ items }) => {
             }
         })
     }, [])
+
+    useEffect(() => {
+        setIsActiveIdx(items.findIndex(({ type }) => type === sortType))
+    }, [sortType])
 
     return (
         <div className="selection__sorting">
@@ -40,7 +45,7 @@ const SortPopup = React.memo(({ items }) => {
                 onClick={togglePopup}
                 ref={ref}
             >
-                {items && items[isActive].label}
+                {items && items[isActiveIdx].label}
             </span>
             {
                 isOpen &&
@@ -56,8 +61,8 @@ const SortPopup = React.memo(({ items }) => {
                                 return (
                                     <li
                                         key={`${category}_${idx}`}
-                                        className={isActive === idx ? classNames.active : classNames.default}
-                                        onClick={() => setIsActive(idx)}
+                                        className={isActiveIdx === idx ? classNames.active : classNames.default}
+                                        onClick={() => onClickSortType(idx)}
                                     >
                                         {category.label}
                                     </li>
@@ -70,5 +75,15 @@ const SortPopup = React.memo(({ items }) => {
         </div>
     )
 })
+
+SortPopup.propTypes = {
+    items: PropTypes.arrayOf(PropTypes.object).isRequired,
+    sortType: PropTypes.string.isRequired,
+    onClickSortType: PropTypes.func
+}
+
+SortPopup.defaultProps = {
+    items: [], sortType: 'popular'
+}
 
 export default SortPopup
