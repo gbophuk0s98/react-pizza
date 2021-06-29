@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const Categories = ({ items, onClick }) => {
+const Categories = React.memo(({ items, onClick }) => {
 
     const [classNames,] = useState({
         default: 'selection__filters-list-item',
@@ -8,6 +8,7 @@ const Categories = ({ items, onClick }) => {
     })
 
     const [itemSelected, setItemSelected] = useState(0)
+    console.log('RENDER')
 
     if (!items)
         return <span>Список пуст</span>
@@ -24,7 +25,7 @@ const Categories = ({ items, onClick }) => {
                                 key={`${name}_${idx}`}
                                 onClick={() => {
                                     setItemSelected(idx)
-                                    onClick(name)
+                                    onClick(idx)
                                 }}
                             >
                                 {name}
@@ -35,6 +36,6 @@ const Categories = ({ items, onClick }) => {
             </div>
         </>
     )
-}
+})
 
 export default Categories

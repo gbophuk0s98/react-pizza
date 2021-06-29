@@ -1,10 +1,8 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import { Switch, Route, Redirect } from 'react-router-dom'
-
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-
 import axios from 'axios'
+
 import { setPizzas } from '../../redux/actions/pizzas'
 
 import { Header } from '../index'
@@ -12,39 +10,33 @@ import { CartPage, HomePage } from '../../pages'
 
 import '../../scss/app.scss'
 
+const App = () => {
+    const dispatch = useDispatch()
 
-class App extends React.Component {
-
-    componentDidMount() {
+    window.test = () => {
         axios.get('http://localhost:3000/db.json')
-            .then(res => this.props.setPizzas(res.data.pizzas))
+            .then(res => dispatch(setPizzas(res.data.pizzas)))
     }
 
-    render() {
+    React.useEffect(() => {
+        axios.get('http://localhost:3000/db.json')
+            .then(res => dispatch(setPizzas(res.data.pizzas)))
+    }, [dispatch])
 
-        console.log(this.props.pizzas)
-        return (
-            <div className="container">
-                <div className="content">
-                    <Header />
-                    <Switch>
-                        <Route path={'/'} exact>
-                            <HomePage items={this.props.pizzas} />
-                        </Route>
-                        <Route path={'/cart'} exact component={CartPage} />
-                        <Redirect to={'/'} />
-                    </Switch>
-                </div>
+    return (
+        <div className="container">
+            <div className="content">
+                <Header />
+                <Switch>
+                    <Route path={'/'} exact>
+                        <HomePage />
+                    </Route>
+                    <Route path={'/cart'} exact component={CartPage} />
+                    <Redirect to={'/'} />
+                </Switch>
             </div>
-        )
-    }
+        </div>
+    )
 }
 
-const mapStateToProps = state => {
-    return {
-        pizzas: state.pizzas.items
-    }
-}
-
-
-export default connect(mapStateToProps, { setPizzas })(App)
+export default App

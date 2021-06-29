@@ -1,18 +1,17 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { connect } from 'react-redux'
 
 import arrow from '../../assets/arrow-top.svg'
 
-const SortPopup = ({ items }) => {
+const classNames = {
+    default: 'selection__sorting-popup-list-item',
+    active: `selection__sorting-popup-list-item sort--selected`
+}
+
+const SortPopup = React.memo(({ items }) => {
 
     const [isOpen, setIsOpen] = useState(false)
     const [isActive, setIsActive] = useState(0)
     const ref = useRef(null)
-
-    const [classNames,] = useState({
-        default: 'selection__sorting-popup-list-item',
-        active: `selection__sorting-popup-list-item sort--selected`
-    })
 
     const onSelectHandler = () => setIsOpen(false)
     const togglePopup = () => setIsOpen(!isOpen)
@@ -41,7 +40,7 @@ const SortPopup = ({ items }) => {
                 onClick={togglePopup}
                 ref={ref}
             >
-                {items && items[isActive].name}
+                {items && items[isActive].label}
             </span>
             {
                 isOpen &&
@@ -60,7 +59,7 @@ const SortPopup = ({ items }) => {
                                         className={isActive === idx ? classNames.active : classNames.default}
                                         onClick={() => setIsActive(idx)}
                                     >
-                                        {category.name}
+                                        {category.label}
                                     </li>
                                 )
                             })
@@ -70,17 +69,6 @@ const SortPopup = ({ items }) => {
             }
         </div>
     )
-}
-
-const mapStateToProps = state => {
-    return {
-
-    }
-}
-
-const mapDispatchToProps = dispatch => {
-    return {}
-}
-
+})
 
 export default SortPopup
