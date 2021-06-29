@@ -14,13 +14,13 @@ const App = () => {
     const dispatch = useDispatch()
 
     window.test = () => {
-        axios.get('http://localhost:3000/db.json')
+        axios.get('http://localhost:3000/pizzas?_order=asc&_sort=price')
             .then(res => dispatch(setPizzas(res.data.pizzas)))
     }
 
     React.useEffect(() => {
-        axios.get('http://localhost:3000/db.json')
-            .then(res => dispatch(setPizzas(res.data.pizzas)))
+        axios.get('http://localhost:3001/pizzas?_order=asc&_sort=price')
+            .then(res => dispatch(setPizzas(res.data)))
     }, [dispatch])
 
     return (

@@ -74,7 +74,7 @@ const PizzaBlock = ({ imageUrl, name, types, sizes, price }) => {
                 </div>
             </div>
             <div className="main__pizza-list-item-cost">
-                <div className="main__pizza-list-item-cost-text">{price} руб.</div>
+                <div className="main__pizza-list-item-cost-text">от {price} руб.</div>
                 <Button outline bold>+ Добавить</Button>
             </div>
         </div>

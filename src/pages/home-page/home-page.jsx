@@ -16,7 +16,7 @@ const HomePage = () => {
     const dispatch = useDispatch()
     const pizzas = useSelector(({ pizzas }) => pizzas.items)
 
-    const onSelectCategory = React.useCallback((idx) => dispatch(setCategory(idx)), [])
+    const onSelectCategory = React.useCallback((idx) => dispatch(setCategory(idx)), [dispatch])
 
     return (
         <>
