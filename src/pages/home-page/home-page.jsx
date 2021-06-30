@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import { setCategory, setSortBy } from '../../redux/actions/filters'
 import { fetchPizzas } from '../../redux/actions/pizzas'
+import { addPizzaToCart } from '../../redux/actions/cart'
 
 import { Categories, SortPopup, PizzaBlock, LoadingBlock } from '../../components'
 
@@ -24,9 +25,11 @@ const HomePage = () => {
 
     const onClickSortType = React.useCallback((idx) => dispatch(setSortBy(sortPopupItems[idx].type)), [dispatch])
 
+    const onAddedPizza = React.useCallback((pizzaInfo) => dispatch(addPizzaToCart(pizzaInfo)), [])
+
     React.useEffect(() => {
         dispatch(fetchPizzas(categoryIdx, sortByString))
-    }, [categoryIdx, sortByString])
+    }, [categoryIdx, sortByString, dispatch])
 
 
     return (
@@ -49,7 +52,11 @@ const HomePage = () => {
 
                 <div className="main__pizza-list">
                     {!loading
-                        ? pizzas.map(pizza => <PizzaBlock isLoading={loading} key={pizza.id} {...pizza} />)
+                        ? pizzas.map(pizza => <PizzaBlock
+                            key={pizza.id}
+                            onAddedPizza={onAddedPizza}
+                            isLoading={loading}
+                            {...pizza} />)
                         : Array.from(Array(10), (_, idx) => <LoadingBlock key={idx} />)
                     }
                 </div>

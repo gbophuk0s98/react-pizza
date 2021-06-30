@@ -152,7 +152,6 @@
 }
 
 .button {
-
     @extend %BUTTON;
 
     & > .header__header-cart {
@@ -177,15 +176,27 @@
         }
     }
 
+    &--add {
+        & i {
+            font-style: normal;
+            color: $whiteColor;
+            border-radius: 50%;
+            background-color: $headerBtnColor;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+        }
+
+        &:hover {
+            color: $whiteColor;
+        }
+    }
+
     &--outline {
 
         border: 1px solid $headerBtnColor;
         background-color: $whiteColor;
         color: $darkColor;
-    
-        &:hover {
-            background-color: $headerBtnColor;
-        }
     
         & > .header__header-cart {
             &-line {
@@ -388,7 +399,7 @@
 
 /* cart-page */
 .cart-content {
-    max-width: 60%;
+    max-width: 80%;
     margin: $defaultIndent auto;
 
     &__header {
@@ -433,9 +444,11 @@
 
             &-info {
                 @extend %FLEX_SB_CENTER;
+                width: 50%;
 
                 &-detail {
-                    margin-left: 10px;
+                    width: 100%;
+                    margin-left: 5px;
                     display: flex;
                     flex-direction: column;
 
@@ -551,6 +564,7 @@
             }
             &-sum {
                 &-cost {
+                    margin-left: 5px;
                     color: $headerBtnColor;
                     font-weight: 700;
                 }
@@ -587,7 +601,7 @@
 
 /*  empty-cart-page */
 .empty-cart-content {
-    margin-top: $defaultIndent * 5;
+    margin-top: $defaultIndent * 2;
 
     &__title {
         display: flex;

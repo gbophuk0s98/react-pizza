@@ -19,7 +19,8 @@ const SortPopup = React.memo(({ items, sortType, onClickSortType }) => {
 
     useEffect(() => {
         document.body.addEventListener('click', (e) => {
-            if (!e.path.includes(ref.current)) {
+            const path = e.path || (e.composedPath && e.composedPath())
+            if (!path.includes(ref.current)) {
                 setIsOpen(false)
             }
         })
@@ -27,7 +28,7 @@ const SortPopup = React.memo(({ items, sortType, onClickSortType }) => {
 
     useEffect(() => {
         setIsActiveIdx(items.findIndex(({ type }) => type === sortType))
-    }, [sortType])
+    }, [sortType, items])
 
     return (
         <div className="selection__sorting">

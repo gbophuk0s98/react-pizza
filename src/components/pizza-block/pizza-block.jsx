@@ -8,11 +8,20 @@ import classNames from 'classnames'
 const availableTypes = ['тонкое', 'традиционное']
 const availableSizes = [26, 30, 40]
 
-const PizzaBlock = ({ imageUrl, name, types, sizes, price }) => {
+const PizzaBlock = ({ id: pizzaIdx, imageUrl, name, types, sizes, price, onAddedPizza }) => {
 
-    const [activeType, setActiveType] = useState(null)
-    const [activeSize, setActiveSize] = useState(null)
-
+    const [activeType, setActiveType] = useState(types[0])
+    const [activeSize, setActiveSize] = useState(availableSizes.indexOf(sizes[0]))
+    const [pizzaInfo, setPizzaInfo] = useState({
+        pizzaIdx,
+        name,
+        type: availableTypes[activeType],
+        size: availableSizes[activeSize],
+        price,
+        imageUrl,
+        count: 1,
+        fullPrice: price,
+    })
 
     const getClasses = isAvailable =>
         classNames('main__pizza-list-item-selection-pastry-button',
@@ -25,14 +34,28 @@ const PizzaBlock = ({ imageUrl, name, types, sizes, price }) => {
     const onSelectedType = idx => {
         if (activeType === idx)
             setActiveType(null)
-        else setActiveType(idx)
+        else {
+            setActiveType(idx)
+            setPizzaInfo({
+                ...pizzaInfo,
+                type: availableTypes[idx]
+            })
+        }
     }
 
     const onSelectedSize = idx => {
         if (activeSize === idx)
             setActiveSize(null)
-        else setActiveSize(idx)
+        else {
+            setActiveSize(idx)
+            setPizzaInfo({
+                ...pizzaInfo,
+                size: availableSizes[idx]
+            })
+        }
     }
+
+    const handleAddPizza = () => onAddedPizza(pizzaInfo)
 
     return (
         <div className="main__pizza-list-item" >
@@ -50,7 +73,9 @@ const PizzaBlock = ({ imageUrl, name, types, sizes, price }) => {
                                 className={classNames(getClasses(types.includes(idx)), {
                                     'selected': activeType === idx
                                 })}
-                                onClick={() => onSelectedType(idx)}
+                                onClick={() => {
+                                    onSelectedType(idx)
+                                }}
                             >
                                 {type}
                             </span>
@@ -76,7 +101,11 @@ const PizzaBlock = ({ imageUrl, name, types, sizes, price }) => {
             </div>
             <div className="main__pizza-list-item-cost">
                 <div className="main__pizza-list-item-cost-text">от {price} руб.</div>
-                <Button outline bold>+ Добавить</Button>
+                <Button
+                    className="button--add"
+                    outline
+                    bold
+                    onClick={handleAddPizza}>+ Добавить<i>{'2'}</i></Button>
             </div>
         </div>
     )
