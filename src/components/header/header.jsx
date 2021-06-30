@@ -33,7 +33,7 @@ const Header = () => {
             </div>
 
             <Link to={'/cart'}>
-                <Button>
+                <Button className="header__header-button">
                     <div className="header__header-cart-cost">{totalPrice} руб.</div>
                     <span className="header__header-cart-line"></span>
                     <div className="header__header-cart-count">

@@ -15,7 +15,6 @@ const Categories = React.memo(({ categoryIdx, items, onSelectCategory }) => {
         <>
             <div className="selection__filters">
                 <ul className="selection__filters-list">
-
                     {items.map((name, idx) => {
                         return (
                             <li

@@ -102,10 +102,9 @@ const PizzaBlock = ({ id: pizzaIdx, imageUrl, name, types, sizes, price, onAdded
             <div className="main__pizza-list-item-cost">
                 <div className="main__pizza-list-item-cost-text">от {price} руб.</div>
                 <Button
-                    className="button--add"
                     outline
                     bold
-                    onClick={handleAddPizza}>+ Добавить<i>{'2'}</i></Button>
+                    onClick={handleAddPizza}>+ Добавить</Button>
             </div>
         </div>
     )

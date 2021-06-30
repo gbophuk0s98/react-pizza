@@ -91,6 +91,9 @@
 
     & .content {
         padding: 40px 50px;
+        @media screen and (max-width: 550px) {
+            padding: 20px;
+        }
     }
 }
 
@@ -141,20 +144,44 @@
                 font-size: 24px;
                 font-weight: bold;
                 text-transform: uppercase;
+
+                @media screen and (max-width: 410px) {
+                    font-size: 16px;
+                }
             }
 
             &-text {
                 color: #7b7b7b;
                 font-size: 16px;
+                @media screen and (max-width: 410px) {
+                    font-size: 10px;
+                }
+                @media screen and (max-width: 370px) {
+                    font-size: 8px;
+                }
             }
         }
     }
+}
+
+.header__header-button {
+    @media screen and (max-width: 500px) {
+        width: 90px;
+    }   
 }
 
 .button {
     @extend %BUTTON;
 
     & > .header__header-cart {
+
+        @media screen and (max-width: 500px) {
+            width: 50px;
+            &-cost, &-line {
+                display: none;
+            }
+        }
+
         &-cost,
         &-count {
             width: 45%;
@@ -173,22 +200,6 @@
             height: 50%;
             width: 1px;
             background: $whiteColor;
-        }
-    }
-
-    &--add {
-        & i {
-            font-style: normal;
-            color: $whiteColor;
-            border-radius: 50%;
-            background-color: $headerBtnColor;
-            width: 20px;
-            height: 20px;
-            text-align: center;
-        }
-
-        &:hover {
-            color: $whiteColor;
         }
     }
 
@@ -239,12 +250,33 @@
     margin-top: $defaultIndent;
     @extend %FLEX_SB_CENTER;
 
+    @media screen and (max-width: 1070px) {
+        flex-direction: column;
+        align-items: flex-start;
+
+        &__filters {
+            margin-bottom: 30px;
+        }
+    }
+
     &__filters {
         max-width: 65%;
         width: 100%;
 
+        @media screen and (max-width: 745px) {
+            max-width: 100%;
+            width: 100%;
+        }
+
         &-list {
             @extend %FLEX_SB_CENTER;
+
+            @media screen and (max-width: 745px) {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-around;
+                width: 100%;
+            }
 
             &-item {
                 cursor: pointer;
@@ -254,6 +286,10 @@
                 border-radius: 30px;
                 font-weight: bold;
                 transition: $defaultTransition;
+
+                @media screen and (max-width: 745px) {
+                    margin-bottom: 5px;
+                }
 
                 &:hover {
                     background-color: $headerBtnColor;
@@ -332,15 +368,13 @@
         @extend %FLEX_SB_CENTER;
         flex-wrap: wrap;
 
-        &::after {
-            flex-basis: 48%;
-            content: '';
+        @media screen and (max-width: 650px){
+            justify-content: space-around;
         }
 
         &-item {
             margin-top: $defaultIndent;
             flex-basis: 24%;
-
 
             &::after {
                 content: '';
@@ -348,6 +382,7 @@
             }
 
             &-img {
+                text-align: center;
                 padding: 0px 6px 0 15px;
             }
 
@@ -394,6 +429,10 @@
                 }
             }
         }
+        &::after {
+            flex-basis: 48%;
+            content: '';
+        }
     }
 }
 
@@ -402,8 +441,14 @@
     max-width: 80%;
     margin: $defaultIndent auto;
 
+    @media screen and (max-width: 1000px) {
+        max-width: 100%;
+        width: 100%;
+    }
+
     &__header {
         @extend %FLEX_SB_CENTER;
+
         &-title {
             @extend %FLEX_SB_CENTER;
             justify-content: flex-start;
@@ -412,6 +457,10 @@
                 margin-left: 15px;
                 font-size: 26px;
                 font-weight: 700;
+
+                @media screen and (max-width: 400px) {
+                    font-size: 18px;
+                }
             }
         }
 
@@ -424,6 +473,10 @@
             &-text {
                 font-size: 16px;
                 color: $deleteBtnColor;
+                
+                @media screen and (max-width: 360px) {
+                    font-size: 14px;
+                }
             }
 
             &:hover {
@@ -442,9 +495,22 @@
             border-top: 1px solid #f4f4f4;
             padding-top: $defaultIndent;
 
+            @media screen and (max-width: 558px) {
+                flex-direction: column;
+            }
+
             &-info {
                 @extend %FLEX_SB_CENTER;
                 width: 50%;
+
+                @media screen and (max-width: 558px) {
+                    width: 70%;
+                }
+    
+
+                @media screen and (max-width: 400px) {
+                    font-size: 18px;
+                }
 
                 &-detail {
                     width: 100%;
@@ -456,18 +522,34 @@
                         font-weight: 700;
                         color: $darkColor;
                         font-size: 22px;
+                        @media screen and (max-width: 666px) {
+                            font-size: 14px;
+                        }
                     }
 
                     &-description {
                         font-size: 18px;
                         color: #8d8d8d;
                         padding: 3px 0 0;
+                        @media screen and (max-width: 666px) {
+                            font-size: 10px;
+                        }
                     }
                 }
             }
 
             &-count {
                 @extend %FLEX_SB_CENTER;
+
+                @media screen and (max-width: 558px) {
+                    width: 25%;
+                    justify-content: space-around;
+                    margin-bottom: 15px;
+                }
+
+                @media screen and (max-width: 468px) {
+                    width: 40%;
+                }
 
                 &-minus,
                 &-plus {
@@ -529,6 +611,15 @@
                 border: 2px solid #d7d7d7;
                 transition: $defaultTransition;
 
+                @media screen and (max-width: 558px) {
+                    width: 24px;
+                    height: 24px;
+                    margin: 20px 0 10px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
                 &-icon {
                     transition: $defaultTransition;
                 }
@@ -549,10 +640,18 @@
         margin-top: $defaultIndent * 2;
         display: flex;
         flex-direction: column;
+    
 
         &-detail {
             @extend %FLEX_SB_CENTER;
             font-size: 22px;
+
+            @media screen and (max-width: 480px){
+                font-size: 18px;
+            }
+            @media screen and (max-width: 400px){
+                flex-direction: column;
+            }
             &-count {
                 &-text {
                     margin-right: 5px;
@@ -575,6 +674,11 @@
             margin-top: $defaultIndent * 2;
             @extend %FLEX_SB_CENTER;
 
+            @media screen and (max-width: 480px){
+                flex-direction: column-reverse;
+                justify-content: flex-end;
+            }
+
             &-goback {
                 @extend %LARGE_BUTTONS;
                 color: #cacaca;
@@ -590,6 +694,10 @@
                 border: 1px solid $headerBtnColor;
                 background-color: $headerBtnColor;
                 color: $whiteColor;
+
+                @media screen and (max-width: 480px){
+                    margin-bottom: 10px;
+                }
 
                 &:hover {
                     opacity: 0.8;
@@ -633,6 +741,17 @@
     &__big-image {
         margin-top: $defaultIndent;
         text-align: center;
+
+        @media screen and (max-width: 666px) {
+            & img { 
+                width: 300px;
+            }
+        }
+        @media screen and (max-width: 335px) {
+            & img { 
+                width: 280px;
+            }
+        }
     }
 
     &__footer {
