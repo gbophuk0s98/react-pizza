@@ -28,7 +28,11 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+<<<<<<< HEAD
     "json-server": "json-server --watch public/db.json --port=3001",
+=======
+    "json-server": "npx json-server --watch public/db.json --port=3001",
+>>>>>>> 11f724b16471e7b3daa4006a066e47cd899c6b6d
     "server": "node server.js"
   },
   "eslintConfig": {
